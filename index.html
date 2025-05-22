@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softphone Web con JsSIP v11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Softphone Web con JsSIP v11</h1>
+
+    <div class="container">
+        <div class="card">
+            <div class="status">Estado: <span id="status" class="unregistered">No registrado</span></div>
+            <div class="config-status" id="configStatus"></div>
+
+            <div class="number-display-wrapper">
+                <div class="number-display" id="numberToCall" contenteditable="true" placeholder="Número o URI SIP"></div>
+                <button class="clear-input-button hidden" id="clearNumberButton" title="Borrar todo"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="dialer">
+                <button class="digit" data-digit="1">1<span class="sub-text">&nbsp;</span></button>
+                <button class="digit" data-digit="2">2<span class="sub-text">ABC</span></button>
+                <button class="digit" data-digit="3">3<span class="sub-text">DEF</span></button>
+                <button class="digit" data-digit="4">4<span class="sub-text">GHI</span></button>
+                <button class="digit" data-digit="5">5<span class="sub-text">JKL</span></button>
+                <button class="digit" data-digit="6">6<span class="sub-text">MNO</span></button>
+                <button class="digit" data-digit="7">7<span class="sub-text">PQRS</span></button>
+                <button class="digit" data-digit="8">8<span class="sub-text">TUV</span></button>
+                <button class="digit" data-digit="9">9<span class="sub-text">WXYZ</span></button>
+                <button class="digit" data-digit="*">*<span class="sub-text">&nbsp;</span></button>
+                <button class="digit" data-digit="0">0<span class="sub-text">&nbsp;</span></button>
+                <button class="digit" data-digit="#">#<span class="sub-text">&nbsp;</span></button>
+                <div class="action-buttons">
+                    <button id="mainCallActionButton" class="green" title="Llamar"><i class="fa-solid fa-phone"></i> Llamar</button>
+                    <button id="backspaceButton" class="blue" title="Borrar último dígito"><i class="fa-solid fa-delete-left"></i> Borrar</button>
+                </div>
+            </div>
+
+            <div class="call-info" id="callInfo"></div>
+
+            <div class="phone-controls">
+                <button id="btnToggleRegister" class="green">Registrar</button>
+                <button id="btnNewCall" class="blue">Nueva Llamada</button>
+            </div>
+
+            <div class="call-controls hidden" id="inCallControls">
+                <button id="btnMute" class="blue"><i class="fa-solid fa-microphone-slash"></i> Silenciar</button>
+                <button id="btnHold" class="blue"><i class="fa-solid fa-pause"></i> En espera</button>
+            </div>
+
+            <div class="call-controls hidden" id="transferControls">
+                <div class="transfer-input-group">
+                    <input type="text" id="transferTarget" placeholder="Transferir a (ciega)">
+                    <button id="btnTransfer" class="blue"><i class="fa-solid fa-right-left"></i> Transferir (Ciega)</button>
+                </div>
+                <div class="transfer-input-group">
+                    <input type="text" id="attendedTransferTarget" placeholder="Transferir a (atendida)">
+                    <button id="btnAttendedTransfer" class="blue"><i class="fa-solid fa-people-arrows"></i> Transferir (Atendida)</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="incoming-call-popup" id="incomingCallPopup">
+            <p id="incomingCallInfo">Llamada entrante de:</p>
+            <div class="buttons">
+                <button id="btnAnswerPopup" class="green"><i class="fa-solid fa-phone"></i> Responder</button>
+                <button id="btnRejectPopup" class="red"><i class="fa-solid fa-phone-slash"></i> Rechazar</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Log de eventos</h2>
+            <div class="log" id="eventLog"></div>
+        </div>
+    </div>
+
+    <script src="jssip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
