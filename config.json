@@ -1,0 +1,7 @@
+{
+  "wsServer": "wss://jupiter.igontek.es:8089/ws",
+  "sipDomain": "jupiter.igontek.es",
+  "sipUser": "207",
+  "sipPassword": "EstaClave207",
+  "autoRegister": true
+}
